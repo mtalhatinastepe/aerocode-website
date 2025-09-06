@@ -111,7 +111,7 @@
     .hero{margin-top:60px;height:54vh;min-height:320px}
     h2{font-size:24px}
     h3{font-size:18px}
-    section{padding:44px 0}           /* bölüm boşluklarını küçült */
+    section{padding:44px 0}
     .map iframe{height:300px}
   }
 
@@ -148,9 +148,9 @@
       <a href="#iletisim"><span class="tr">İletişim</span><span class="en">Contact</span></a>
     </nav>
     <div class="langswitch">
-      <!-- İPUÇLARI DOĞRU -->
-      <button id="btnEN" title="English"><img src="uk-flag.png" alt="English"></button>
-      <button id="btnTR" title="Türkçe"><img src="tr-flag.png" alt="Türkçe"></button>
+      <!-- DİKKAT: data-lang ile garanti -->
+      <button id="btnTR" data-lang="tr" title="Türkçe"><img src="tr-flag.png" alt="Türkçe"></button>
+      <button id="btnEN" data-lang="en" title="English"><img src="uk-flag.png" alt="English"></button>
     </div>
   </header>
 
@@ -247,20 +247,18 @@
   // yıl
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Dil anahtarı
-  const B = document.body,
-        btnEN = document.getElementById('btnEN'),
-        btnTR = document.getElementById('btnTR');
+  // Dil anahtarı (butonun data-lang'ına göre çalışır)
+  const B = document.body;
+  const langButtons = document.querySelectorAll('.langswitch button');
+
   function setLang(l){
     B.setAttribute('data-lang', l);
-    document.documentElement.lang = (l==='tr'?'tr':'en');
-    btnTR.classList.toggle('active', l==='tr');
-    btnEN.classList.toggle('active', l==='en');
+    document.documentElement.lang = (l === 'tr' ? 'tr' : 'en');
+    langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === l));
     localStorage.setItem('aerocode-lang', l);
-    document.title = (l==='tr' ? 'Aerocode Mühendislik' : 'Aerocode Engineering');
+    document.title = (l === 'tr' ? 'Aerocode Mühendislik' : 'Aerocode Engineering');
   }
-  btnEN.onclick = ()=>setLang('en');
-  btnTR.onclick = ()=>setLang('tr');
+  langButtons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
   setLang(localStorage.getItem('aerocode-lang') || 'tr');
 
   // Slider
@@ -291,8 +289,8 @@
   function start(){timer=setInterval(next, 5000);} 
   function stop(){clearInterval(timer);}
   function restart(){stop();start();}
-  document.getElementById('next').onclick=()=>go(idx+1,true);
-  document.getElementById('prev').onclick=()=>go(idx-1,true);
+  document.getElementById('next')?.addEventListener('click', ()=>go(idx+1,true));
+  document.getElementById('prev')?.addEventListener('click', ()=>go(idx-1,true));
 
   buildDots(); updateUI(); start();
   document.querySelector('.hero').addEventListener('mouseenter', stop);
