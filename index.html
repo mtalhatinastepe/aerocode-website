@@ -3,31 +3,31 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Aerocode Mühendislik</title>
+<title>Aerocode Mühendislik | Engineering & R&D Solutions</title>
+<meta name="description" content="Aerocode Mühendislik; havacılık, meteoroloji drone sistemleri, akıllı arı kovanları, MRO yazılımı ve Ar-Ge proje geliştirme alanlarında mühendislik çözümleri sunar.">
 
 <style>
-
 :root{
-  --header:#0b0b0c;
-  --text:#ffffff;
-  --accent:#0ea5e9;
-  --bg:#ffffff;
-  --border:#dce3ed;
+  --navy:#07111f;
+  --navy2:#0b1b31;
+  --blue:#0ea5e9;
+  --cyan:#38bdf8;
+  --text:#111827;
+  --muted:#64748b;
+  --light:#f8fafc;
+  --border:#e5e7eb;
+  --white:#ffffff;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--text);
   background:#fff;
-  color:#111827;
   overflow-x:hidden;
 }
 
@@ -36,24 +36,32 @@ img{
   display:block;
 }
 
+a{text-decoration:none}
+
+/* LANGUAGE */
+
+.tr,.en{display:none!important}
+
+body[data-lang="tr"] .tr{display:block!important}
+body[data-lang="en"] .en{display:block!important}
+
+nav .tr, nav .en{display:none!important}
+body[data-lang="tr"] nav .tr{display:inline!important}
+body[data-lang="en"] nav .en{display:inline!important}
+
 /* HEADER */
 
 .topbar{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
+  inset:0 0 auto 0;
   z-index:1000;
-
+  height:92px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-
-  padding:14px 28px;
-
-  background:rgba(10,10,12,.92);
-  backdrop-filter:blur(10px);
-
+  padding:0 46px;
+  background:rgba(7,17,31,.92);
+  backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 
@@ -61,82 +69,73 @@ img{
   display:flex;
   align-items:center;
   gap:18px;
+  min-width:270px;
 }
 
 .brand img{
-  height:90px;
+  height:68px;
+  width:auto;
   object-fit:contain;
 }
 
 .slogan{
-  color:#f3f4f6;
+  color:#e5edf7;
+  font-size:.92rem;
   font-style:italic;
-  font-size:1rem;
+  line-height:1.25;
   white-space:nowrap;
 }
 
 nav{
   display:flex;
-  gap:24px;
+  align-items:center;
+  gap:28px;
 }
 
 nav a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  transition:.25s;
+  color:#f8fafc;
+  font-size:.95rem;
+  font-weight:650;
+  letter-spacing:.2px;
+  padding:8px 0;
+  position:relative;
 }
 
-nav a:hover{
-  color:var(--accent);
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  transition:.25s ease;
 }
+
+nav a:hover::after{width:100%}
 
 .langswitch{
   display:flex;
-  gap:10px;
+  align-items:center;
+  gap:9px;
 }
 
 .langswitch button{
-  background:none;
-  border:none;
+  background:transparent;
+  border:0;
   cursor:pointer;
-  padding:0;
+  padding:3px;
+  border-radius:6px;
 }
 
 .langswitch img{
   width:28px;
+  height:auto;
   border-radius:4px;
 }
 
-.langswitch button.active img{
-  outline:2px solid #fff;
-}
-
-/* LANGUAGE */
-
-.tr,.en{
-  display:none!important;
-}
-
-body[data-lang="tr"] .tr{
-  display:block!important;
-}
-
-body[data-lang="en"] .en{
-  display:block!important;
-}
-
-nav .tr,
-nav .en{
-  display:none!important;
-}
-
-body[data-lang="tr"] nav .tr{
-  display:inline!important;
-}
-
-body[data-lang="en"] nav .en{
-  display:inline!important;
+.langswitch button.active{
+  outline:2px solid rgba(255,255,255,.8);
 }
 
 /* HERO */
@@ -144,13 +143,15 @@ body[data-lang="en"] nav .en{
 .hero{
   position:relative;
   height:100vh;
+  min-height:680px;
   overflow:hidden;
+  background:var(--navy);
 }
 
 .slides{
-  display:flex;
   height:100%;
-  transition:transform .8s ease;
+  display:flex;
+  transition:transform .9s ease;
 }
 
 .slide{
@@ -165,82 +166,140 @@ body[data-lang="en"] nav .en{
   width:100%;
   height:100%;
   object-fit:cover;
-  filter:brightness(.55);
+  filter:brightness(.56) saturate(1.02);
 }
 
-.overlay{
+.hero-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.25),
-    rgba(0,0,0,.55)
-  );
+  background:
+    linear-gradient(90deg,rgba(7,17,31,.92) 0%,rgba(7,17,31,.68) 42%,rgba(7,17,31,.28) 100%),
+    linear-gradient(180deg,rgba(7,17,31,.15) 0%,rgba(7,17,31,.75) 100%);
 }
 
-.caption{
+.hero-content{
   position:absolute;
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%);
-  width:min(1200px,92%);
-  text-align:center;
+  transform:translate(-50%,-45%);
+  width:min(1180px,92%);
   color:#fff;
 }
 
-.caption h1{
+.hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(14,165,233,.16);
+  border:1px solid rgba(56,189,248,.36);
+  color:#dff6ff;
+  font-weight:700;
+  font-size:.88rem;
+  margin-bottom:18px;
+}
+
+.hero-content h1{
   margin:0;
-  font-size:clamp(34px,6vw,76px);
+  max-width:820px;
+  font-size:clamp(38px,6vw,78px);
+  line-height:1.02;
+  letter-spacing:-1.6px;
   font-weight:900;
-  line-height:1.1;
 }
 
-.caption p{
-  margin-top:18px;
-  font-size:clamp(16px,2vw,22px);
-  color:#f3f4f6;
+.hero-content p{
+  max-width:720px;
+  margin:22px 0 0;
+  font-size:clamp(16px,1.8vw,22px);
+  line-height:1.7;
+  color:#dbeafe;
 }
 
-.hero .arrows{
+.hero-actions{
+  display:flex;
+  gap:14px;
+  margin-top:34px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 22px;
+  border-radius:12px;
+  font-weight:800;
+  transition:.25s ease;
+}
+
+.btn-primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue),#2563eb);
+  box-shadow:0 12px 30px rgba(14,165,233,.28);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 38px rgba(14,165,233,.36);
+}
+
+.btn-secondary{
+  color:#fff;
+  border:1px solid rgba(255,255,255,.34);
+  background:rgba(255,255,255,.08);
+}
+
+.btn-secondary:hover{
+  background:rgba(255,255,255,.16);
+}
+
+.hero-arrows{
   position:absolute;
   inset:0;
+  pointer-events:none;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 18px;
+  padding:0 22px;
 }
 
 .arrow{
+  pointer-events:auto;
   width:52px;
   height:52px;
   border-radius:50%;
-  background:rgba(255,255,255,.14);
-  color:#fff;
   display:grid;
   place-items:center;
+  color:#fff;
+  font-size:34px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
   cursor:pointer;
-  font-size:30px;
+  user-select:none;
   transition:.25s;
 }
 
 .arrow:hover{
-  background:rgba(255,255,255,.24);
+  background:rgba(255,255,255,.22);
 }
 
 .dots{
   position:absolute;
-  bottom:24px;
   left:50%;
+  bottom:30px;
   transform:translateX(-50%);
   display:flex;
   gap:10px;
 }
 
 .dot{
-  width:12px;
-  height:12px;
+  width:11px;
+  height:11px;
   border-radius:50%;
-  background:rgba(255,255,255,.4);
+  background:rgba(255,255,255,.42);
   cursor:pointer;
 }
 
@@ -248,110 +307,364 @@ body[data-lang="en"] nav .en{
   background:#fff;
 }
 
-/* SECTION */
+/* GLOBAL SECTIONS */
 
 section{
-  padding:90px 0;
+  padding:92px 0;
 }
 
 .container{
   width:min(1180px,92%);
-  margin:auto;
+  margin-inline:auto;
+}
+
+.section-head{
+  max-width:760px;
+  margin-bottom:36px;
+}
+
+.eyebrow{
+  color:var(--blue);
+  font-weight:850;
+  letter-spacing:.08em;
+  font-size:.78rem;
+  text-transform:uppercase;
+  margin-bottom:10px;
 }
 
 h2{
-  font-size:40px;
-  margin-bottom:18px;
+  margin:0;
+  font-size:clamp(30px,4vw,46px);
+  line-height:1.15;
+  letter-spacing:-.8px;
+  color:#0f172a;
 }
 
-h3{
-  font-size:24px;
-}
-
-p{
+.section-head p{
+  margin:16px 0 0;
+  color:var(--muted);
   line-height:1.8;
-  color:#374151;
+  font-size:1.05rem;
 }
 
-/* CARDS */
+.light-section{
+  background:var(--light);
+}
 
-.solution-card{
+/* FEATURES */
+
+.features{
+  margin-top:-84px;
+  position:relative;
+  z-index:20;
+  padding:0 0 80px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.feature-card{
   background:#fff;
-  border:1px solid #e5e7eb;
-  border-radius:18px;
-  padding:28px;
-  margin-bottom:28px;
-  box-shadow:0 10px 30px rgba(0,0,0,.04);
-  transition:.3s;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 18px 45px rgba(15,23,42,.08);
 }
 
-.solution-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 40px rgba(0,0,0,.08);
+.feature-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:24px;
+  background:linear-gradient(135deg,var(--blue),#2563eb);
+  margin-bottom:14px;
+}
+
+.feature-card h3{
+  margin:0 0 8px;
+  font-size:1.08rem;
+  color:#0f172a;
+}
+
+.feature-card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:.95rem;
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.25fr .85fr;
+  gap:34px;
+  align-items:start;
+}
+
+.about-panel{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:34px;
+  box-shadow:0 16px 44px rgba(15,23,42,.06);
+}
+
+.about-panel p{
+  color:#334155;
+  line-height:1.85;
+  margin:0 0 16px;
+}
+
+.vm-card{
+  background:linear-gradient(180deg,#0b1b31,#07111f);
+  color:#fff;
+  border-radius:24px;
+  padding:30px;
+  margin-bottom:18px;
+  box-shadow:0 18px 42px rgba(7,17,31,.18);
+}
+
+.vm-card h3{
+  margin:0 0 12px;
+  color:#fff;
+}
+
+.vm-card p{
+  color:#dbeafe;
+  margin:0;
+  line-height:1.8;
+}
+
+/* PROJECTS */
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.project-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 16px 44px rgba(15,23,42,.06);
+  transition:.28s ease;
+}
+
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 60px rgba(15,23,42,.12);
+}
+
+.project-img{
+  height:220px;
+  overflow:hidden;
+  background:#0f172a;
+}
+
+.project-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.35s;
+}
+
+.project-card:hover .project-img img{
+  transform:scale(1.05);
+}
+
+.project-content{
+  padding:26px;
+}
+
+.project-content h3{
+  margin:0 0 10px;
+  color:#0f172a;
+}
+
+.project-content p{
+  margin:0;
+  color:#475569;
+  line-height:1.75;
+}
+
+/* PROCESS */
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:16px;
+}
+
+.process-step{
+  padding:22px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:#fff;
+}
+
+.step-no{
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-weight:900;
+  background:linear-gradient(135deg,var(--blue),#2563eb);
+  margin-bottom:14px;
+}
+
+.process-step h3{
+  margin:0 0 8px;
+  font-size:1rem;
+}
+
+.process-step p{
+  margin:0;
+  font-size:.92rem;
+  color:var(--muted);
+  line-height:1.65;
 }
 
 /* CONTACT */
 
-.contact-box{
-  background:#f9fafb;
-  border-radius:18px;
-  padding:30px;
-  border:1px solid #e5e7eb;
+.contact-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:28px;
+  align-items:stretch;
 }
 
-.contact-box a{
-  color:#0ea5e9;
-  text-decoration:none;
+.contact-card{
+  background:#0b1b31;
+  color:#fff;
+  border-radius:24px;
+  padding:32px;
 }
 
-/* MAP */
+.contact-card h3{
+  margin:0 0 14px;
+  color:#fff;
+  font-size:1.5rem;
+}
+
+.contact-card p{
+  color:#dbeafe;
+  margin:0 0 18px;
+  line-height:1.8;
+}
+
+.contact-list{
+  display:grid;
+  gap:14px;
+  margin-top:22px;
+}
+
+.contact-item{
+  padding:16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.09);
+  color:#fff;
+}
+
+.contact-item strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.contact-item a{
+  color:#dff6ff;
+}
 
 .map{
-  margin-top:24px;
+  border-radius:24px;
   overflow:hidden;
-  border-radius:18px;
+  border:1px solid var(--border);
+  min-height:100%;
 }
 
 .map iframe{
   width:100%;
-  height:420px;
+  height:100%;
+  min-height:420px;
   border:0;
 }
 
 /* FOOTER */
 
 footer{
-  background:#0b0b0c;
+  background:#07111f;
+  color:#cbd5e1;
+  padding:38px 0;
+}
+
+.footer-grid{
+  width:min(1180px,92%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr .9fr .9fr;
+  gap:28px;
+}
+
+footer h3{
   color:#fff;
-  text-align:center;
-  padding:26px;
+  margin:0 0 10px;
+}
+
+footer p, footer a{
+  color:#cbd5e1;
+  line-height:1.7;
+  font-size:.95rem;
+}
+
+.footer-links{
+  display:grid;
+  gap:8px;
+}
+
+.copyright{
+  width:min(1180px,92%);
+  margin:28px auto 0;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#94a3b8;
+  font-size:.9rem;
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
-
+@media(max-width:1050px){
   .topbar{
-    padding:12px 16px;
+    height:auto;
+    min-height:86px;
     flex-wrap:wrap;
-    gap:10px;
+    padding:12px 18px;
+    gap:12px;
   }
 
   .brand{
-    width:100%;
+    flex:1 1 100%;
     justify-content:center;
-    flex-direction:column;
-    gap:10px;
   }
 
   .brand img{
-    height:64px;
+    height:58px;
   }
 
   .slogan{
-    font-size:.82rem;
-    text-align:center;
     white-space:normal;
+    text-align:center;
+    font-size:.85rem;
   }
 
   nav{
@@ -361,541 +674,516 @@ footer{
     gap:14px;
   }
 
-  nav a{
-    font-size:.92rem;
+  .langswitch{
+    position:absolute;
+    top:16px;
+    right:16px;
   }
 
   .hero{
-    height:78vh;
+    min-height:620px;
   }
 
-  h2{
-    font-size:32px;
+  .feature-grid,
+  .projects-grid,
+  .process-grid,
+  .about-grid,
+  .contact-grid,
+  .footer-grid{
+    grid-template-columns:1fr;
   }
 
-  .caption h1{
-    font-size:clamp(28px,8vw,48px);
-  }
-
-  .caption p{
-    font-size:16px;
+  .features{
+    margin-top:0;
+    padding:70px 0;
   }
 
   .map iframe{
-    height:300px;
+    min-height:320px;
   }
-
 }
 
+@media(max-width:520px){
+  .hero-content{
+    transform:translate(-50%,-42%);
+  }
+
+  .hero-content h1{
+    font-size:clamp(30px,10vw,42px);
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  section{
+    padding:66px 0;
+  }
+
+  .project-img{
+    height:190px;
+  }
+
+  .arrow{
+    width:42px;
+    height:42px;
+    font-size:26px;
+  }
+}
 </style>
 </head>
 
 <body data-lang="tr">
 
-<!-- HEADER -->
-
 <header class="topbar">
+  <div class="brand">
+    <a href="#anasayfa">
+      <img src="logo-2026.png" alt="Aerocode Logo">
+    </a>
+    <div class="slogan">
+      <span class="tr">“ Hayalleri olan uyumaz. ”</span>
+      <span class="en">“ Those who dream never sleep. ”</span>
+    </div>
+  </div>
 
-<div class="brand">
+  <nav>
+    <a href="#anasayfa"><span class="tr">Ana Sayfa</span><span class="en">Homepage</span></a>
+    <a href="#kurumsal"><span class="tr">Kurumsal</span><span class="en">About</span></a>
+    <a href="#rnd"><span class="tr">Ar-Ge Projeleri</span><span class="en">R&D Projects</span></a>
+    <a href="#yaklasim"><span class="tr">Yaklaşımımız</span><span class="en">Approach</span></a>
+    <a href="#iletisim"><span class="tr">İletişim</span><span class="en">Contact</span></a>
+  </nav>
 
-<a href="#anasayfa">
-<img src="logo-2026.png" alt="Aerocode Logo">
-</a>
-
-<div class="slogan">
-<span class="tr">“ Hayalleri olan uyumaz. ”</span>
-<span class="en">“ Those who dream never sleep. ”</span>
-</div>
-
-</div>
-
-<nav>
-
-<a href="#anasayfa">
-<span class="tr">Ana Sayfa</span>
-<span class="en">Homepage</span>
-</a>
-
-<a href="#kurumsal">
-<span class="tr">Kurumsal</span>
-<span class="en">About</span>
-</a>
-
-<a href="#rnd">
-<span class="tr">Ar-Ge Projeleri</span>
-<span class="en">R&D Projects</span>
-</a>
-
-<a href="#iletisim">
-<span class="tr">İletişim</span>
-<span class="en">Contact</span>
-</a>
-
-</nav>
-
-<div class="langswitch">
-
-<button data-lang="tr" class="active">
-<img src="tr-flag.png" alt="Türkçe">
-</button>
-
-<button data-lang="en">
-<img src="uk-flag.png" alt="English">
-</button>
-
-</div>
-
+  <div class="langswitch">
+    <button data-lang="tr" class="active" title="Türkçe"><img src="tr-flag.png" alt="Türkçe"></button>
+    <button data-lang="en" title="English"><img src="uk-flag.png" alt="English"></button>
+  </div>
 </header>
 
-<!-- HERO -->
+<section id="anasayfa" class="hero">
+  <div class="slides" id="slides">
 
-<section class="hero" id="anasayfa">
+    <div class="slide">
+      <img class="bg" src="mro-2026.png" alt="Aerocode MRO">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-kicker tr">Aviation Maintenance Software</div>
+        <div class="hero-kicker en">Aviation Maintenance Software</div>
+        <h1 class="tr">Aerocode MRO ile bakım süreçlerini dijitalleştirin</h1>
+        <h1 class="en">Digitalize maintenance operations with Aerocode MRO</h1>
+        <p class="tr">Bakım, operasyon, parça takibi ve izlenebilirlik süreçlerini tek merkezden yöneten ölçeklenebilir MRO yazılım altyapısı.</p>
+        <p class="en">A scalable MRO software infrastructure that manages maintenance, operations, parts tracking and traceability from a single center.</p>
+        <div class="hero-actions">
+          <a href="#rnd" class="btn btn-primary tr">Projeleri İncele</a>
+          <a href="#rnd" class="btn btn-primary en">Explore Projects</a>
+          <a href="#iletisim" class="btn btn-secondary tr">İletişime Geç</a>
+          <a href="#iletisim" class="btn btn-secondary en">Contact Us</a>
+        </div>
+      </div>
+    </div>
 
-<div class="slides" id="slides">
+    <div class="slide">
+      <img class="bg" src="drone-2026.png" alt="Meteorology Drone">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-kicker tr">Atmospheric Data Systems</div>
+        <div class="hero-kicker en">Atmospheric Data Systems</div>
+        <h1 class="tr">Meteoroloji drone sistemleriyle atmosferik veri toplama</h1>
+        <h1 class="en">Atmospheric data acquisition with meteorology drone systems</h1>
+        <p class="tr">Dron tabanlı ölçüm, sensör entegrasyonu ve mikro ölçek hava tahmini için mühendislik odaklı sistem geliştirme yaklaşımı.</p>
+        <p class="en">Engineering-focused system development for drone-based measurement, sensor integration and micro-scale weather forecasting.</p>
+        <div class="hero-actions">
+          <a href="#rnd" class="btn btn-primary tr">Ar-Ge Çalışmaları</a>
+          <a href="#rnd" class="btn btn-primary en">R&D Activities</a>
+          <a href="#iletisim" class="btn btn-secondary tr">Bizimle Görüşün</a>
+          <a href="#iletisim" class="btn btn-secondary en">Talk to Us</a>
+        </div>
+      </div>
+    </div>
 
-<!-- MRO -->
+    <div class="slide">
+      <img class="bg" src="kovan-2026.png" alt="Smart Hive">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-kicker tr">Smart Agriculture & Beekeeping</div>
+        <div class="hero-kicker en">Smart Agriculture & Beekeeping</div>
+        <h1 class="tr">Akıllı arı kovanı teknolojileriyle sürdürülebilir arıcılık</h1>
+        <h1 class="en">Sustainable beekeeping with smart hive technologies</h1>
+        <p class="tr">Sıcaklık, nem, ağırlık ve koloni davranışı verilerini izleyerek arıcılıkta erken uyarı ve veri odaklı karar alma altyapısı.</p>
+        <p class="en">Early warning and data-driven decision infrastructure for beekeeping by monitoring temperature, humidity, weight and colony behavior.</p>
+        <div class="hero-actions">
+          <a href="#rnd" class="btn btn-primary tr">Sistemi İncele</a>
+          <a href="#rnd" class="btn btn-primary en">Explore System</a>
+          <a href="#iletisim" class="btn btn-secondary tr">İletişim</a>
+          <a href="#iletisim" class="btn btn-secondary en">Contact</a>
+        </div>
+      </div>
+    </div>
 
-<div class="slide">
+    <div class="slide">
+      <img class="bg" src="consulting-2026.png" alt="Project Development Consulting">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-kicker tr">Project Development & Consulting</div>
+        <div class="hero-kicker en">Project Development & Consulting</div>
+        <h1 class="tr">Ar-Ge projeleriniz için mühendislik ve danışmanlık desteği</h1>
+        <h1 class="en">Engineering and consulting support for your R&D projects</h1>
+        <p class="tr">Gereksinim analizinden TRL planlamasına, tasarımdan doğrulama süreçlerine kadar uçtan uca proje geliştirme yaklaşımı.</p>
+        <p class="en">End-to-end project development from requirements analysis and TRL planning to design and verification processes.</p>
+        <div class="hero-actions">
+          <a href="#yaklasim" class="btn btn-primary tr">Yaklaşımımız</a>
+          <a href="#yaklasim" class="btn btn-primary en">Our Approach</a>
+          <a href="#iletisim" class="btn btn-secondary tr">Teklif Alın</a>
+          <a href="#iletisim" class="btn btn-secondary en">Request Contact</a>
+        </div>
+      </div>
+    </div>
 
-<img class="bg" src="mro-2026.png" alt="MRO">
+  </div>
 
-<div class="overlay"></div>
-
-<div class="caption">
-
-<h1 class="tr">Aerocode MRO</h1>
-<h1 class="en">Aerocode MRO</h1>
-
-<p class="tr">
-Dijital bakım, operasyon ve sürdürülebilir filo yönetimi çözümleri
-</p>
-
-<p class="en">
-Digital maintenance, operations and sustainable fleet management solutions
-</p>
-
-</div>
-
-</div>
-
-<!-- DRONE -->
-
-<div class="slide">
-
-<img class="bg" src="drone-2026.png" alt="Meteorology Drone">
-
-<div class="overlay"></div>
-
-<div class="caption">
-
-<h1 class="tr">Meteoroloji Drone Sistemleri</h1>
-<h1 class="en">Meteorology Drone Systems</h1>
-
-<p class="tr">
-Atmosferik veri toplama ve ileri mühendislik analiz sistemleri
-</p>
-
-<p class="en">
-Atmospheric data acquisition and advanced engineering analysis systems
-</p>
-
-</div>
-
-</div>
-
-<!-- SMART HIVE -->
-
-<div class="slide">
-
-<img class="bg" src="kovan-2026.png" alt="Smart Hive">
-
-<div class="overlay"></div>
-
-<div class="caption">
-
-<h1 class="tr">Akıllı Arı Kovanı Teknolojileri</h1>
-<h1 class="en">Smart Hive Technologies</h1>
-
-<p class="tr">
-Sensör destekli sürdürülebilir arıcılık çözümleri
-</p>
-
-<p class="en">
-Sensor-supported sustainable beekeeping solutions
-</p>
-
-</div>
-
-</div>
-
-<!-- CONSULTING -->
-
-<div class="slide">
-
-<img class="bg" src="consulting-2026.png" alt="Consulting">
-
-<div class="overlay"></div>
-
-<div class="caption">
-
-<h1 class="tr">Proje Geliştirme & Danışmanlık</h1>
-<h1 class="en">Project Development & Consulting</h1>
-
-<p class="tr">
-Ar-Ge, mühendislik ve teknoloji projelerinde uçtan uca çözüm ortaklığı
-</p>
-
-<p class="en">
-End-to-end solution partnership in R&D, engineering and technology projects
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="arrows">
-<div class="arrow" id="prev">‹</div>
-<div class="arrow" id="next">›</div>
-</div>
-
-<div class="dots" id="dots"></div>
-
+  <div class="hero-arrows">
+    <div class="arrow" id="prev">‹</div>
+    <div class="arrow" id="next">›</div>
+  </div>
+  <div class="dots" id="dots"></div>
 </section>
 
-<!-- ABOUT -->
+<section class="features">
+  <div class="container">
+    <div class="feature-grid">
 
-<section id="kurumsal">
+      <div class="feature-card">
+        <div class="feature-icon">✦</div>
+        <h3 class="tr">Multidisipliner Ekip</h3>
+        <h3 class="en">Multidisciplinary Team</h3>
+        <p class="tr">Farklı mühendislik disiplinlerini tek proje çatısı altında birleştiriyoruz.</p>
+        <p class="en">We bring different engineering disciplines together under one project structure.</p>
+      </div>
 
-<div class="container">
+      <div class="feature-card">
+        <div class="feature-icon">⚙</div>
+        <h3 class="tr">Ar-Ge Odaklı Geliştirme</h3>
+        <h3 class="en">R&D Oriented Development</h3>
+        <p class="tr">Fikirden prototipe, prototipten sahaya uygulanabilir çözümler geliştiriyoruz.</p>
+        <p class="en">We develop applicable solutions from concept to prototype and field deployment.</p>
+      </div>
 
-<h2 class="tr">Kurumsal</h2>
-<h2 class="en">About Us</h2>
+      <div class="feature-card">
+        <div class="feature-icon">▣</div>
+        <h3 class="tr">Saha Uygulanabilirliği</h3>
+        <h3 class="en">Field Applicability</h3>
+        <p class="tr">Projeleri yalnızca teoride değil, gerçek kullanım koşullarında değerlendiriyoruz.</p>
+        <p class="en">We evaluate projects not only theoretically, but also under real operating conditions.</p>
+      </div>
 
-<p class="tr">
-Aerocode Mühendislik; havacılık, meteoroloji, yazılım, veri analizi, gömülü sistemler ve sürdürülebilir teknoloji alanlarında faaliyet gösteren multidisipliner bir mühendislik şirketidir. Farklı disiplinlerden uzman personellerin birlikte çalıştığı yapımız sayesinde Ar-Ge projelerinde hızlı, yenilikçi ve uygulanabilir çözümler geliştirmekteyiz.
-</p>
+      <div class="feature-card">
+        <div class="feature-icon">✓</div>
+        <h3 class="tr">Güvenilir Teknoloji</h3>
+        <h3 class="en">Reliable Technology</h3>
+        <p class="tr">İzlenebilir, ölçeklenebilir ve sürdürülebilir sistem mimarilerine odaklanıyoruz.</p>
+        <p class="en">We focus on traceable, scalable and sustainable system architectures.</p>
+      </div>
 
-<p class="tr">
-Şirketimiz; bakım-onarım operasyon yazılımları, meteorolojik drone sistemleri, akıllı arı kovanı teknolojileri ve ileri mühendislik danışmanlığı alanlarında projeler yürütmekte; akademi, sanayi ve teknoloji ekosistemleri arasında güçlü iş birlikleri oluşturmaktadır.
-</p>
-
-<p class="en">
-Aerocode Engineering is a multidisciplinary engineering company operating in aerospace, meteorology, software, data analytics, embedded systems, and sustainable technologies. Through collaboration between specialists from different disciplines, we develop innovative and applicable R&D solutions.
-</p>
-
-<p class="en">
-Our company develops projects in maintenance-operation software, meteorological drone systems, smart hive technologies, and advanced engineering consultancy while building strong collaborations between academia, industry, and technology ecosystems.
-</p>
-
-<h3 class="tr">Misyon</h3>
-<h3 class="en">Mission</h3>
-
-<p class="tr">
-Yenilikçi mühendislik yaklaşımını sürdürülebilir teknoloji çözümleri ile birleştirerek; güvenilir, ölçeklenebilir ve yüksek katma değerli sistemler geliştirmek.
-</p>
-
-<p class="en">
-To combine innovative engineering approaches with sustainable technology solutions and develop reliable, scalable, and high value-added systems.
-</p>
-
-<h3 class="tr">Vizyon</h3>
-<h3 class="en">Vision</h3>
-
-<p class="tr">
-Türkiye’den doğan, uluslararası ölçekte tanınan ve ileri teknoloji odaklı projeler geliştiren öncü bir mühendislik ve Ar-Ge şirketi olmak.
-</p>
-
-<p class="en">
-To become a leading engineering and R&D company originating from Türkiye and recognized internationally for advanced technology projects.
-</p>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
-<!-- R&D -->
+<section id="kurumsal" class="light-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow tr">Kurumsal</div>
+      <div class="eyebrow en">About</div>
+      <h2 class="tr">Farklı disiplinleri aynı hedefte buluşturan mühendislik yapısı</h2>
+      <h2 class="en">An engineering structure that brings multiple disciplines together</h2>
+      <p class="tr">Aerocode Mühendislik; yazılım, havacılık, meteoroloji, veri analizi, gömülü sistemler ve sürdürülebilir teknoloji alanlarında Ar-Ge projeleri geliştiren dinamik bir mühendislik şirketidir.</p>
+      <p class="en">Aerocode Engineering is a dynamic engineering company developing R&D projects in software, aerospace, meteorology, data analytics, embedded systems and sustainable technologies.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-panel">
+        <p class="tr">Aerocode’un temel gücü, farklı disiplinlerden gelen personellerin birlikte çalışmasına dayanan multidisipliner mühendislik yaklaşımıdır. Bu yapı sayesinde projeler yalnızca tek bir teknik bakış açısıyla değil; sistem mühendisliği, yazılım geliştirme, saha uygulanabilirliği, veri yönetimi ve operasyonel sürdürülebilirlik açısından birlikte ele alınır.</p>
+        <p class="tr">Şirketimiz; bakım-onarım operasyon yazılımları, meteoroloji drone sistemleri, akıllı arı kovanı teknolojileri ve ileri mühendislik danışmanlığı alanlarında projeler yürütmektedir. Her projede amaç; fikri uygulanabilir, ölçülebilir ve sahada değer üreten bir çözüme dönüştürmektir.</p>
+
+        <p class="en">Aerocode’s core strength is its multidisciplinary engineering approach, based on collaboration between personnel from different technical backgrounds. This enables projects to be evaluated not from a single perspective, but through system engineering, software development, field applicability, data management and operational sustainability.</p>
+        <p class="en">Our company develops projects in maintenance-operation software, meteorology drone systems, smart hive technologies and advanced engineering consultancy. In every project, the objective is to transform an idea into an applicable, measurable and field-value-creating solution.</p>
+      </div>
+
+      <div>
+        <div class="vm-card">
+          <h3 class="tr">Misyon</h3>
+          <h3 class="en">Mission</h3>
+          <p class="tr">Yenilikçi mühendislik yaklaşımını sürdürülebilir teknoloji çözümleriyle birleştirerek güvenilir, ölçeklenebilir ve yüksek katma değerli sistemler geliştirmek.</p>
+          <p class="en">To combine innovative engineering approaches with sustainable technology solutions and develop reliable, scalable and high value-added systems.</p>
+        </div>
+
+        <div class="vm-card">
+          <h3 class="tr">Vizyon</h3>
+          <h3 class="en">Vision</h3>
+          <p class="tr">Türkiye’den doğan, uluslararası ölçekte tanınan ve ileri teknoloji odaklı projeler geliştiren öncü bir mühendislik ve Ar-Ge şirketi olmak.</p>
+          <p class="en">To become a leading engineering and R&D company originating from Türkiye and recognized internationally for advanced technology projects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="rnd">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow tr">Ar-Ge Projeleri</div>
+      <div class="eyebrow en">R&D Projects</div>
+      <h2 class="tr">Devam eden teknoloji geliştirme alanlarımız</h2>
+      <h2 class="en">Our ongoing technology development areas</h2>
+      <p class="tr">Aerocode; havacılık yazılımı, atmosferik ölçüm sistemleri, akıllı tarım ve mühendislik danışmanlığı alanlarında Ar-Ge odaklı proje geliştirme çalışmalarını sürdürmektedir.</p>
+      <p class="en">Aerocode continues R&D-oriented project development in aviation software, atmospheric measurement systems, smart agriculture and engineering consultancy.</p>
+    </div>
 
-<div class="container">
+    <div class="projects-grid">
 
-<h2 class="tr">Ar-Ge Projeleri</h2>
-<h2 class="en">R&D Projects</h2>
+      <div class="project-card">
+        <div class="project-img"><img src="mro-2026.png" alt="Aerocode MRO"></div>
+        <div class="project-content">
+          <h3 class="tr">Aerocode MRO</h3>
+          <h3 class="en">Aerocode MRO</h3>
+          <p class="tr">Havacılık bakım ve operasyon süreçlerini dijitalleştiren modüler MRO platformu; iş emri, parça takibi, bakım planlama ve izlenebilirlik altyapıları üzerine geliştirilmektedir.</p>
+          <p class="en">A modular MRO platform that digitalizes aviation maintenance and operations through work order, parts tracking, planning and traceability modules.</p>
+        </div>
+      </div>
 
-<div class="solution-card">
+      <div class="project-card">
+        <div class="project-img"><img src="drone-2026.png" alt="Meteorology Drone"></div>
+        <div class="project-content">
+          <h3 class="tr">Meteoroloji Drone Sistemleri</h3>
+          <h3 class="en">Meteorology Drone Systems</h3>
+          <p class="tr">Atmosferik veri toplama ve mikro ölçek hava tahmini amacıyla geliştirilen sistemler; sensör entegrasyonu, veri işleme ve saha operasyon kabiliyeti üzerine odaklanmaktadır.</p>
+          <p class="en">Systems developed for atmospheric data acquisition and micro-scale weather forecasting, focused on sensor integration, data processing and field operation capabilities.</p>
+        </div>
+      </div>
 
-<h3 class="tr">Aerocode MRO</h3>
-<h3 class="en">Aerocode MRO</h3>
+      <div class="project-card">
+        <div class="project-img"><img src="kovan-2026.png" alt="Smart Hive"></div>
+        <div class="project-content">
+          <h3 class="tr">Akıllı Arı Kovanı Teknolojileri</h3>
+          <h3 class="en">Smart Hive Technologies</h3>
+          <p class="tr">Sıcaklık, nem, ağırlık ve koloni davranışını gerçek zamanlı izleyerek arıcılıkta erken uyarı, verimlilik ve sürdürülebilir yönetim altyapısı sağlar.</p>
+          <p class="en">Provides early warning, efficiency and sustainable management infrastructure by monitoring temperature, humidity, weight and colony behavior in real time.</p>
+        </div>
+      </div>
 
-<p class="tr">
-Havacılık bakım ve operasyon süreçlerini dijitalleştiren modüler MRO platformumuz; iş emri yönetimi, parça takibi, bakım planlama ve operasyonel izlenebilirlik altyapıları üzerine geliştirilmektedir.
-</p>
+      <div class="project-card">
+        <div class="project-img"><img src="consulting-2026.png" alt="Consulting"></div>
+        <div class="project-content">
+          <h3 class="tr">Proje Geliştirme & Danışmanlık</h3>
+          <h3 class="en">Project Development & Consulting</h3>
+          <p class="tr">Ar-Ge proje yazımı, TRL planlaması, sistem mimarisi, doğrulama-test stratejisi ve teknoloji geliştirme süreçlerinde uçtan uca mühendislik desteği sunar.</p>
+          <p class="en">Provides end-to-end engineering support in R&D proposal development, TRL planning, system architecture, verification-test strategy and technology development.</p>
+        </div>
+      </div>
 
-<p class="en">
-Our modular MRO platform digitalizes aviation maintenance and operations through work order management, parts tracking, maintenance planning, and operational traceability systems.
-</p>
-
-</div>
-
-<div class="solution-card">
-
-<h3 class="tr">Meteoroloji Drone Sistemleri</h3>
-<h3 class="en">Meteorology Drone Systems</h3>
-
-<p class="tr">
-Atmosferik veri toplama ve mikro ölçek hava tahmini amacıyla geliştirilen meteoroloji drone sistemlerimiz; sensör entegrasyonu, veri işleme ve saha operasyon kabiliyetleri üzerine yoğunlaşmaktadır.
-</p>
-
-<p class="en">
-Our meteorology drone systems focus on atmospheric data acquisition, sensor integration, data processing, and operational capabilities for micro-scale weather forecasting.
-</p>
-
-</div>
-
-<div class="solution-card">
-
-<h3 class="tr">Akıllı Arı Kovanı Teknolojileri</h3>
-<h3 class="en">Smart Hive Technologies</h3>
-
-<p class="tr">
-Sensör destekli akıllı arı kovanı sistemlerimiz; sıcaklık, nem, ağırlık ve koloni davranışlarını gerçek zamanlı takip ederek sürdürülebilir arıcılık çözümleri geliştirmektedir.
-</p>
-
-<p class="en">
-Our smart hive systems monitor temperature, humidity, weight, and colony behavior in real time to support sustainable beekeeping technologies.
-</p>
-
-</div>
-
-<div class="solution-card">
-
-<h3 class="tr">Proje Geliştirme & Danışmanlık</h3>
-<h3 class="en">Project Development & Consulting</h3>
-
-<p class="tr">
-Ar-Ge proje yazımı, TRL planlaması, mühendislik doğrulama süreçleri, sistem mimarisi ve teknoloji geliştirme alanlarında uçtan uca danışmanlık hizmetleri sunmaktayız.
-</p>
-
-<p class="en">
-We provide end-to-end consultancy services in R&D proposal development, TRL planning, engineering verification, system architecture, and technology development.
-</p>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
-<!-- CONTACT -->
+<section id="yaklasim" class="light-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow tr">Yaklaşımımız</div>
+      <div class="eyebrow en">Our Approach</div>
+      <h2 class="tr">Fikirden sahaya uzanan mühendislik süreci</h2>
+      <h2 class="en">Engineering process from concept to field</h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-no">1</div>
+        <h3 class="tr">Gereksinim Analizi</h3>
+        <h3 class="en">Requirement Analysis</h3>
+        <p class="tr">Teknik, operasyonel ve ticari ihtiyaçları birlikte değerlendiririz.</p>
+        <p class="en">We evaluate technical, operational and commercial needs together.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-no">2</div>
+        <h3 class="tr">Sistem Tasarımı</h3>
+        <h3 class="en">System Design</h3>
+        <p class="tr">Çözüm mimarisini ölçeklenebilir ve doğrulanabilir şekilde kurgularız.</p>
+        <p class="en">We design scalable and verifiable solution architectures.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-no">3</div>
+        <h3 class="tr">Prototipleme</h3>
+        <h3 class="en">Prototyping</h3>
+        <p class="tr">Fikri test edilebilir ürün veya sistem yaklaşımına dönüştürürüz.</p>
+        <p class="en">We transform concepts into testable product or system approaches.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-no">4</div>
+        <h3 class="tr">Doğrulama</h3>
+        <h3 class="en">Verification</h3>
+        <p class="tr">Analiz, test ve saha geri bildirimiyle çözümü olgunlaştırırız.</p>
+        <p class="en">We mature the solution through analysis, testing and field feedback.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-no">5</div>
+        <h3 class="tr">Saha Uygulaması</h3>
+        <h3 class="en">Field Deployment</h3>
+        <p class="tr">Kullanıma hazır, sürdürülebilir ve izlenebilir çıktı hedefleriz.</p>
+        <p class="en">We target deployable, sustainable and traceable outputs.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="iletisim">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow tr">İletişim</div>
+      <div class="eyebrow en">Contact</div>
+      <h2 class="tr">Projelerinizi birlikte geliştirelim</h2>
+      <h2 class="en">Let’s develop your projects together</h2>
+      <p class="tr">Ar-Ge, mühendislik, yazılım ve teknoloji geliştirme ihtiyaçlarınız için bizimle iletişime geçebilirsiniz.</p>
+      <p class="en">You can contact us for your R&D, engineering, software and technology development needs.</p>
+    </div>
 
-<div class="container">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3 class="tr">Bizimle İletişime Geçin</h3>
+        <h3 class="en">Contact Us</h3>
+        <p class="tr">Yeni bir proje fikriniz, teknik danışmanlık ihtiyacınız veya iş birliği öneriniz varsa Aerocode Mühendislik ile iletişime geçebilirsiniz.</p>
+        <p class="en">If you have a new project idea, technical consultancy need or collaboration proposal, you can contact Aerocode Engineering.</p>
 
-<h2 class="tr">İletişim</h2>
-<h2 class="en">Contact</h2>
+        <div class="contact-list">
+          <div class="contact-item">
+            <strong>E-mail</strong>
+            <a href="mailto:aerocodemuhendislik@gmail.com">aerocodemuhendislik@gmail.com</a>
+          </div>
 
-<div class="contact-box">
+          <div class="contact-item">
+            <strong>Telefon / Phone</strong>
+            <a href="tel:+905445757627">+90 544 575 76 27</a>
+          </div>
 
-<h3 class="tr">Bizimle İletişime Geçin</h3>
-<h3 class="en">Contact Us</h3>
+          <div class="contact-item">
+            <strong>Adres / Address</strong>
+            Aksu Mah. Yurt Sk. OMÜ Yerleşkesi, Samsun Teknopark No:165 Atakum / Samsun
+          </div>
+        </div>
+      </div>
 
-<p class="tr">
-Projeleriniz, iş birlikleri ve mühendislik çözümleri hakkında bizimle iletişime geçebilirsiniz.
-</p>
-
-<p class="en">
-You can contact us regarding your projects, collaborations, and engineering solutions.
-</p>
-
-<p>
-<strong>E-mail:</strong>
-<a href="mailto:aerocodemuhendislik@gmail.com">
-aerocodemuhendislik@gmail.com
-</a>
-</p>
-
-<p>
-<strong>Telefon / Phone:</strong>
-<a href="tel:+905445757627">
-+90 544 575 76 27
-</a>
-</p>
-
-<p>
-<strong>Adres / Address:</strong><br>
-Aksu Mah. Yurt Sk. OMÜ Yerleşkesi, Samsun Teknopark No:165 Atakum / Samsun
-</p>
-
-<div class="map">
-
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d314.76834489821715!2d36.17967371848972!3d41.361089784286875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40887f005ed7eb6f%3A0xeac58a07a907878b!2sSamsun%20Teknopark!5e0!3m2!1str!2str!4v1757163688018!5m2!1str!2str"
-allowfullscreen=""
-loading="lazy">
-</iframe>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d314.76834489821715!2d36.17967371848972!3d41.361089784286875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40887f005ed7eb6f%3A0xeac58a07a907878b!2sSamsun%20Teknopark!5e0!3m2!1str!2str!4v1757163688018!5m2!1str!2str"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-© <span id="y"></span> Aerocode Mühendislik
+  <div class="footer-grid">
+    <div>
+      <h3>Aerocode Mühendislik</h3>
+      <p class="tr">Havacılık, meteoroloji, akıllı tarım ve Ar-Ge danışmanlığı alanlarında multidisipliner mühendislik çözümleri.</p>
+      <p class="en">Multidisciplinary engineering solutions in aviation, meteorology, smart agriculture and R&D consultancy.</p>
+    </div>
+
+    <div>
+      <h3 class="tr">Bağlantılar</h3>
+      <h3 class="en">Links</h3>
+      <div class="footer-links">
+        <a href="#anasayfa">Ana Sayfa / Homepage</a>
+        <a href="#kurumsal">Kurumsal / About</a>
+        <a href="#rnd">Ar-Ge Projeleri / R&D Projects</a>
+        <a href="#iletisim">İletişim / Contact</a>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="tr">İletişim</h3>
+      <h3 class="en">Contact</h3>
+      <p>aerocodemuhendislik@gmail.com<br>+90 544 575 76 27<br>Samsun Teknopark</p>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © <span id="y"></span> Aerocode Mühendislik. All rights reserved.
+  </div>
 </footer>
 
 <script>
-
-// YEAR
-
-document.getElementById('y').textContent =
-new Date().getFullYear();
-
-// LANGUAGE
+document.getElementById('y').textContent = new Date().getFullYear();
 
 const body = document.body;
-
-const langButtons =
-document.querySelectorAll('.langswitch button');
+const langButtons = document.querySelectorAll('.langswitch button');
 
 function setLang(lang){
-
-body.setAttribute('data-lang',lang);
-
-document.documentElement.lang = lang;
-
-localStorage.setItem('aerocode-lang',lang);
-
-langButtons.forEach(btn=>{
-
-btn.classList.toggle(
-'active',
-btn.dataset.lang===lang
-);
-
-});
-
+  body.setAttribute('data-lang',lang);
+  document.documentElement.lang = lang;
+  localStorage.setItem('aerocode-lang',lang);
+  langButtons.forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang===lang);
+  });
 }
 
 langButtons.forEach(btn=>{
-
-btn.addEventListener('click',()=>{
-
-setLang(btn.dataset.lang);
-
+  btn.addEventListener('click',()=>setLang(btn.dataset.lang));
 });
 
-});
+setLang(localStorage.getItem('aerocode-lang') || 'tr');
 
-setLang(
-localStorage.getItem('aerocode-lang') || 'tr'
-);
-
-// SLIDER
-
-const slidesWrap =
-document.getElementById('slides');
-
-const slides =
-Array.from(slidesWrap.children);
-
-const dotsWrap =
-document.getElementById('dots');
+const slidesWrap = document.getElementById('slides');
+const slides = Array.from(slidesWrap.children);
+const dotsWrap = document.getElementById('dots');
 
 let current = 0;
 let timer;
 
 function buildDots(){
-
-slides.forEach((_,i)=>{
-
-const d=document.createElement('div');
-
-d.className='dot'+
-(i===0?' active':'');
-
-d.addEventListener('click',()=>go(i,true));
-
-dotsWrap.appendChild(d);
-
-});
-
+  slides.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>go(i,true));
+    dotsWrap.appendChild(d);
+  });
 }
 
 function updateSlider(){
-
-slidesWrap.style.transform =
-`translateX(-${current*100}%)`;
-
-[...dotsWrap.children].forEach((d,i)=>{
-
-d.classList.toggle('active',i===current);
-
-});
-
+  slidesWrap.style.transform = `translateX(-${current*100}%)`;
+  [...dotsWrap.children].forEach((d,i)=>{
+    d.classList.toggle('active',i===current);
+  });
 }
 
 function go(i,manual=false){
-
-current =
-(i+slides.length)%slides.length;
-
-updateSlider();
-
-if(manual){
-
-restart();
-
+  current = (i+slides.length)%slides.length;
+  updateSlider();
+  if(manual) restart();
 }
 
-}
+function next(){go(current+1);}
+function start(){timer=setInterval(next,5000);}
+function stop(){clearInterval(timer);}
+function restart(){stop();start();}
 
-function next(){
-
-go(current+1);
-
-}
-
-function prev(){
-
-go(current-1);
-
-}
-
-function start(){
-
-timer=setInterval(next,5000);
-
-}
-
-function stop(){
-
-clearInterval(timer);
-
-}
-
-function restart(){
-
-stop();
-start();
-
-}
-
-document.getElementById('next')
-.addEventListener('click',()=>go(current+1,true));
-
-document.getElementById('prev')
-.addEventListener('click',()=>go(current-1,true));
+document.getElementById('next').addEventListener('click',()=>go(current+1,true));
+document.getElementById('prev').addEventListener('click',()=>go(current-1,true));
 
 buildDots();
 updateSlider();
 start();
 
+document.querySelector('.hero').addEventListener('mouseenter',stop);
+document.querySelector('.hero').addEventListener('mouseleave',start);
 </script>
 
 </body>
