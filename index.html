@@ -48,6 +48,18 @@ body[data-lang="en"] .en{display:block!important}
 nav .tr, nav .en{display:none!important}
 body[data-lang="tr"] nav .tr{display:inline!important}
 body[data-lang="en"] nav .en{display:inline!important}
+  .footer-links .tr,
+.footer-links .en{
+  display:none!important;
+}
+
+body[data-lang="tr"] .footer-links .tr{
+  display:inline!important;
+}
+
+body[data-lang="en"] .footer-links .en{
+  display:inline!important;
+}
 
 /* HEADER */
 
@@ -1097,15 +1109,27 @@ footer p, footer a{
       <p class="en">Multidisciplinary engineering solutions in aviation, meteorology, smart agriculture and R&D consultancy.</p>
     </div>
 
-    <div>
-      <h3 class="tr">Bağlantılar</h3>
-      <h3 class="en">Links</h3>
-      <div class="footer-links">
-        <a href="#anasayfa">Ana Sayfa / Homepage</a>
-        <a href="#kurumsal">Kurumsal / About</a>
-        <a href="#rnd">Ar-Ge Projeleri / R&D Projects</a>
-        <a href="#iletisim">İletişim / Contact</a>
-      </div>
+<div class="footer-links">
+  <a href="#anasayfa">
+    <span class="tr">Ana Sayfa</span>
+    <span class="en">Homepage</span>
+  </a>
+
+  <a href="#kurumsal">
+    <span class="tr">Kurumsal</span>
+    <span class="en">About</span>
+  </a>
+
+  <a href="#rnd">
+    <span class="tr">Ar-Ge Projeleri</span>
+    <span class="en">R&D Projects</span>
+  </a>
+
+  <a href="#iletisim">
+    <span class="tr">İletişim</span>
+    <span class="en">Contact</span>
+  </a>
+</div>
     </div>
 
     <div>
