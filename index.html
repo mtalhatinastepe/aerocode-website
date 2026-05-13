@@ -620,6 +620,20 @@ footer{
   display:grid;
   grid-template-columns:1.1fr .9fr .9fr;
   gap:28px;
+  align-items:start;
+}
+
+.footer-links .tr,
+.footer-links .en{
+  display:none!important;
+}
+
+body[data-lang="tr"] .footer-links .tr{
+  display:inline!important;
+}
+
+body[data-lang="en"] .footer-links .en{
+  display:inline!important;
 }
 
 footer h3{
@@ -627,7 +641,8 @@ footer h3{
   margin:0 0 10px;
 }
 
-footer p, footer a{
+footer p,
+footer a{
   color:#cbd5e1;
   line-height:1.7;
   font-size:.95rem;
@@ -646,7 +661,6 @@ footer p, footer a{
   color:#94a3b8;
   font-size:.9rem;
 }
-
 /* MOBILE */
 
 @media(max-width:1050px){
@@ -1097,40 +1111,55 @@ footer p, footer a{
 
 <footer>
   <div class="footer-grid">
+
     <div>
       <h3>Aerocode Mühendislik</h3>
-      <p class="tr">Havacılık, meteoroloji, akıllı tarım ve Ar-Ge danışmanlığı alanlarında multidisipliner mühendislik çözümleri.</p>
-      <p class="en">Multidisciplinary engineering solutions in aviation, meteorology, smart agriculture and R&D consultancy.</p>
+      <p class="tr">
+        Havacılık, meteoroloji, akıllı tarım ve Ar-Ge danışmanlığı alanlarında multidisipliner mühendislik çözümleri.
+      </p>
+      <p class="en">
+        Multidisciplinary engineering solutions in aviation, meteorology, smart agriculture and R&D consultancy.
+      </p>
     </div>
 
-<div class="footer-links">
-  <a href="#anasayfa">
-    <span class="tr">Ana Sayfa</span>
-    <span class="en">Homepage</span>
-  </a>
+    <div>
+      <h3 class="tr">Bağlantılar</h3>
+      <h3 class="en">Links</h3>
 
-  <a href="#kurumsal">
-    <span class="tr">Kurumsal</span>
-    <span class="en">About</span>
-  </a>
+      <div class="footer-links">
+        <a href="#anasayfa">
+          <span class="tr">Ana Sayfa</span>
+          <span class="en">Homepage</span>
+        </a>
 
-  <a href="#rnd">
-    <span class="tr">Ar-Ge Projeleri</span>
-    <span class="en">R&D Projects</span>
-  </a>
+        <a href="#kurumsal">
+          <span class="tr">Kurumsal</span>
+          <span class="en">About</span>
+        </a>
 
-  <a href="#iletisim">
-    <span class="tr">İletişim</span>
-    <span class="en">Contact</span>
-  </a>
-</div>
+        <a href="#rnd">
+          <span class="tr">Ar-Ge Projeleri</span>
+          <span class="en">R&D Projects</span>
+        </a>
+
+        <a href="#iletisim">
+          <span class="tr">İletişim</span>
+          <span class="en">Contact</span>
+        </a>
+      </div>
     </div>
 
     <div>
       <h3 class="tr">İletişim</h3>
       <h3 class="en">Contact</h3>
-      <p>aerocodemuhendislik@gmail.com<br>+90 544 575 76 27<br>Samsun Teknopark</p>
+
+      <p>
+        <a href="mailto:aerocodemuhendislik@gmail.com">aerocodemuhendislik@gmail.com</a><br>
+        <a href="tel:+905445757627">+90 544 575 76 27</a><br>
+        Samsun Teknopark
+      </p>
     </div>
+
   </div>
 
   <div class="copyright">
